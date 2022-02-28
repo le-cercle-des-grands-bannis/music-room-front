@@ -1,8 +1,24 @@
-import '../styles/globals.css'
+import 'styles/globals.scss'
 import type { AppProps } from 'next/app'
+import {appWithTranslation} from 'next-i18next';
+import {Provider} from "react-redux";
+import store from "@Redux/store"
+import Layout from "@Components/Layout"
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+    return (
+        <Layout>
+            <Component {...pageProps} />
+        </Layout>
+    )
 }
 
-export default MyApp
+function MyApp({ Component, pageProps }: AppProps) {
+    return (
+        <Provider store={store}>
+            <App Component={Component} pageProps={pageProps} {...pageProps} />
+        </Provider>
+    )
+}
+
+export default appWithTranslation(MyApp)
