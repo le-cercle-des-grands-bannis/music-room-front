@@ -1,0 +1,31 @@
+:root {
+    /* Colors */
+    --color-primary: #00bcd4;
+    --color-secondary: #fafafa;
+    --color-tertiary: #fafafa;
+    --white: #fff;
+    --blue: #0070f3;
+    /* Fonts */
+
+    /* Font sizes (px / 16 = rem)*/
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+
+    /* Font weights */
+    --text-regular: 400;
+    --text-bold: 600;
+    --text-black: 900;
+
+    /* Line heights */
+
+    --radius-base: 10%
+}
+
+@function space($size) {
+    @return $size * 8px
+}
