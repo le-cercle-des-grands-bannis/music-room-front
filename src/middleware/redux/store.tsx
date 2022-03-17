@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { compose } from "redux"
-import notificationReducer from "@Redux/notification";
+import notificationReducer from "@Root/middleware/redux/notification";
+import loginReducer from "@Root/middleware/redux/login"
 
 declare global {
     interface Window {
@@ -12,7 +13,8 @@ const composeEnhancers = "development" === process.env.NODE_ENV && process.brows
 
 export default configureStore({
     reducer: {
-        notification: notificationReducer
+        notification: notificationReducer,
+        login: loginReducer,
     },
     enhancers: composeEnhancers
 })

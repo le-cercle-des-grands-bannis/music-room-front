@@ -2,7 +2,7 @@ import 'styles/globals.scss'
 import type { AppProps } from 'next/app'
 import {appWithTranslation} from 'next-i18next';
 import {Provider} from "react-redux";
-import store from "@Redux/store"
+import store from "@Root/middleware/redux/store"
 import Layout from "@Components/Layout"
 
 function App({ Component, pageProps }: AppProps) {

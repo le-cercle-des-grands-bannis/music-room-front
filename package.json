@@ -9,16 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@benjaminnoufel/http": "^1.1.2",
+    "@benjaminnoufel/http-cors": "^2.1.0",
+    "@benjaminnoufel/tools": "^0.4.1",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.4.4",
     "@mui/lab": "^5.0.0-alpha.70",
     "@mui/material": "^5.4.3",
+    "@mui/styles": "^5.4.4",
     "@reduxjs/toolkit": "^1.8.0",
+    "formik": "^2.2.9",
     "next": "12.1.0",
     "next-i18next": "^10.4.0",
     "react": "17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

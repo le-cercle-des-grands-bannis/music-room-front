@@ -19,8 +19,20 @@
       "@Components/*": [
         "./src/components/*"
       ],
+      "@Constants/*": [
+        "./src/constants/*"
+      ],
+      "@Interfaces/*": [
+        "./src/interfaces/*"
+      ],
       "@Redux/*": [
-        "./src/redux/*"
+        "./src/middleware/redux/*"
+      ],
+      "@Middleware/*": [
+        "./src/middleware/*"
+      ],
+      "@Validation/*": [
+        "./src/validation/*"
       ],
       "@Root/*": [
         "./src/*"

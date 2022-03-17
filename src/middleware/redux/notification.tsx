@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface IStore {
+export type StoreType = {
     payload: string | null;
     error: string | null;
     openNotif: boolean;
 }
 
-const initialState: IStore = {
+const initialState: StoreType = {
     payload: null,
     error: null,
     openNotif: true,
