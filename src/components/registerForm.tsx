@@ -76,7 +76,7 @@ const RegisterForm = () => {
                     <div>
                         <TextField
                             fullWidth
-                            id="username"
+                            name="username"
                             type="text"
                             label="Username"
                             placeholder="Username"
@@ -86,7 +86,7 @@ const RegisterForm = () => {
                         />
                         <TextField
                             fullWidth
-                            id="email"
+                            name="email"
                             type="email"
                             label="Email"
                             placeholder="Email"
@@ -96,7 +96,7 @@ const RegisterForm = () => {
                         />
                         <TextField
                             fullWidth
-                            id="email_confirmation"
+                            name="email_confirmation"
                             type="email"
                             label="Email confirmation"
                             placeholder="Email confirmation"
@@ -106,7 +106,7 @@ const RegisterForm = () => {
                         />
                         <TextField
                             fullWidth
-                            id="password"
+                            name="password"
                             type="password"
                             label="Password"
                             placeholder="Password"
@@ -116,7 +116,7 @@ const RegisterForm = () => {
                         />
                         <TextField
                             fullWidth
-                            id="password_confirmation"
+                            name="password_confirmation"
                             type="password"
                             label="Password confirmation"
                             placeholder="Password confirmation"

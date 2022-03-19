@@ -47,7 +47,7 @@ const LoginForm = () => {
   const classes = useStyles(theme)
   const { handleChange, handleSubmit, values, isSubmitting, errors } = useFormik({
     initialValues: {
-      username: '',
+      email: '',
       password: '',
       rememberMe: false,
     },
@@ -74,18 +74,18 @@ const LoginForm = () => {
           <div>
             <TextField
               fullWidth
-              id="username"
+              name="email"
               type="email"
               label="Username"
               placeholder="Username"
               margin="normal"
               onChange={handleChange}
-              value={values.username}
-              error={Boolean(errors.username && values.username)}
+              value={values.email}
+              error={Boolean(errors.email && values.email)}
             />
             <TextField
               fullWidth
-              id="password"
+              name="password"
               type="password"
               label="Password"
               placeholder="Password"
