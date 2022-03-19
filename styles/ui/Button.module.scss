@@ -1,12 +1,16 @@
 .button {
-    border-radius: var(--radius-base);
+    border-radius: 4px;
     border: none;
-    padding-inline: 25px;
-    padding-block: space(1);
+    padding: 6px 16px;
+    line-height: 1.75;
     font-size: var(--text-sm);
     font-weight: var(--text-bold);
     font-family: inherit;
     cursor: pointer;
+    text-transform: uppercase;
+    min-width: 64px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
 
 .button--primary {

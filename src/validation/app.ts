@@ -1,5 +1,5 @@
-export interface IResponsePayload<T = string> {
-    payload: T;
+export type ResponsePayloadType<T = string> = {
+  payload: T
 }
 
-export interface IHttpCorsError extends Error {}
+export type HttpCorsErrorType = Error & {}
