@@ -1,5 +1,4 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Button,
   Card,
@@ -7,27 +6,33 @@ import {
   CardContent,
   CardHeader,
   TextField,
+  Theme,
   useTheme,
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { useFormik } from 'formik'
 import { loginValidator } from '@Validation/users'
-import { fetchError, fetchPayload } from '@Redux/notification'
-import { IHttpCorsError, IResponsePayload } from '@Validation/app'
+import {
+  fetchError as fetchErrorAction,
+  fetchPayload as fetchPayloadAction,
+} from '@Redux/notification'
+import { HttpCorsErrorType, ResponsePayloadType } from '@Validation/app'
 import RequestHttp from '@Middleware/request'
 import { USER_INFORMATION } from '@Constants/routes'
 import { throwHttpError } from '@Middleware/errors'
 import { useRouter } from 'next/router'
+import { useCallback } from 'react'
+import { RootState } from '@Redux/store'
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
     width: 400,
-    margin: (theme) => theme.spacing(0, 'auto'),
+    margin: (theme: Theme) => theme.spacing(0, 'auto'),
   },
   loginBtn: {
-    marginTop: (theme) => theme.spacing(2),
+    marginTop: (theme: Theme) => theme.spacing(2),
     flexGrow: 1,
   },
   header: {
@@ -36,14 +41,23 @@ const useStyles = makeStyles({
     color: '#fff',
   },
   card: {
-    marginTop: (theme) => theme.spacing(10),
+    marginTop: (theme: Theme) => theme.spacing(10),
   },
 })
 
 const LoginForm = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const fetchError = useCallback(
+    (error: string | null) => dispatch(fetchErrorAction(error)),
+    [dispatch]
+  )
+  const fetchPayload = useCallback(
+    (payload: string | null) => dispatch(fetchPayloadAction(payload)),
+    [dispatch]
+  )
   const theme = useTheme()
+  const { error } = useSelector((state: RootState) => state.notification)
   const classes = useStyles(theme)
   const { handleChange, handleSubmit, values, isSubmitting, errors } = useFormik({
     initialValues: {
@@ -54,14 +68,15 @@ const LoginForm = () => {
     validationSchema: loginValidator(),
     async onSubmit(values) {
       try {
-        const { payload } = await RequestHttp.post<IResponsePayload>(`/login`, {
+        const { payload } = await RequestHttp.post<ResponsePayloadType>(`/login`, {
           ...values,
         })
         await router.push(USER_INFORMATION)
-        dispatch(fetchPayload(payload))
+        fetchPayload(payload)
       } catch (e) {
-        throwHttpError({ err: e as IHttpCorsError, locale: router.locale, fetchError })
-        console.log(e)
+        console.log(error)
+        throwHttpError({ err: e as HttpCorsErrorType, locale: router.locale, fetchError })
+        console.log(error)
       }
     },
   })

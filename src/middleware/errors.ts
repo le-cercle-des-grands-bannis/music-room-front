@@ -5,7 +5,7 @@ import type { HttpCorsErrorType } from '@Validation/app'
 type ThrowHttpErrorType = {
   err: HttpCorsErrorType
   locale: string | undefined
-  fetchError: typeof fetchErrorAction
+  fetchError: any
 }
 
 export const throwHttpError = ({ err, locale, fetchError }: ThrowHttpErrorType) => {
@@ -14,15 +14,15 @@ export const throwHttpError = ({ err, locale, fetchError }: ThrowHttpErrorType) 
     const { errors }: { errors: string[] } = JSON.parse(messages)
     if ('undefined' !== typeof errors && errors.length) {
       errors.map((error) => {
-        fetchErrorAction(error)
+        fetchError(error)
       })
       return
     }
   } catch {
     if (locale === 'fr') {
-      fetchErrorAction(INTERNAL_ERROR_FR)
+      fetchError(INTERNAL_ERROR_FR)
       return
     }
-    fetchErrorAction(INTERNAL_ERROR_EN)
+    fetchError(INTERNAL_ERROR_EN)
   }
 }

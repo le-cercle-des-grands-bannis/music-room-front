@@ -17,6 +17,7 @@ export const notificationSlice = createSlice({
   initialState,
   reducers: {
     fetchPayload: (state, action) => {
+      state.error = null
       state.payload = action.payload
       state.openNotif = Boolean(action.payload)
     },

@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { compose } from 'redux'
-import notificationReducer from '@Root/middleware/redux/notification'
-import loginReducer from '@Root/middleware/redux/login'
+import notificationReducer from '@Redux/notification'
 
 declare global {
   interface Window {
@@ -14,10 +13,14 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     : compose
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     notification: notificationReducer,
-    login: loginReducer,
   },
   enhancers: composeEnhancers,
 })
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export default store

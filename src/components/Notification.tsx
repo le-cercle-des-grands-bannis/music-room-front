@@ -6,7 +6,8 @@ import Snackbar, { SnackbarOrigin, SnackbarCloseReason } from '@mui/material/Sna
 import { useCallback, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchError, fetchPayload, StoreType, openCloseNotif } from '@Redux/notification'
+import { fetchError, fetchPayload, openCloseNotif } from '@Redux/notification'
+import { RootState } from '@Redux/store'
 
 interface StateSnackBar extends SnackbarOrigin {
   open: boolean
@@ -65,7 +66,7 @@ const getMessageByLang = (payload: string | null, error: string | null): string 
  * @constructor
  */
 export const Notification = (): JSX.Element => {
-  const { payload, error, openNotif } = useSelector((state: StoreType) => state)
+  const { payload, error, openNotif } = useSelector((state: RootState) => state.notification)
   const dispatch = useDispatch()
   const [state] = useState<StateSnackBar>({
     horizontal: 'center',
@@ -98,7 +99,6 @@ export const Notification = (): JSX.Element => {
   }, [])
 
   useEffect(() => {
-    console.log(error)
     if (error || payload) {
       dispatch(openCloseNotif(true))
     }
@@ -120,8 +120,6 @@ export const Notification = (): JSX.Element => {
       }
     } catch {}
   }, [cookies])
-
-  console.log({ error })
 
   return (
     <Snackbar
